@@ -14,12 +14,11 @@ export const Catalogo: React.FC = () => {
     return (
         <>
             <Box 
-                bg={'gray.800'} 
-                w={'74%'} 
-                h={'88%'} 
+                w={'77.8%'} 
+                h={'100%'} 
                 pos={'absolute'} 
-                top={'6vh'} 
-                right={'4vw'} 
+                top={'0'} 
+                right={'0'} 
                 rounded={'md'} 
                 p={'6'}
             >   

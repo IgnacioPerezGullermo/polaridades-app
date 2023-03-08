@@ -5,7 +5,7 @@ export const createProductoInput = z.object(
         code: z.number({
             required_error: 'Crea un codigo para el producto',
             invalid_type_error: 'El Codigo debe ser un numero',
-        }).lte(5), 
+        }), 
         name: z.string({
             required_error: 'El Producto necesita un nombre',
             invalid_type_error: 'El nombre del producto debe ser texto'
@@ -13,11 +13,11 @@ export const createProductoInput = z.object(
         price: z.number({
             required_error: 'El Producto debe tenes un precio',
             invalid_type_error: 'El precio debe ser un numero',
-        }),
+        })  ,
         categoriasId: z.string(),
         stock: z.number({
             invalid_type_error: 'El Codigo debe ser un numero',
-        }).lte(4),
+        }),
         description: z.string(),
         thumbnail: z.string(),
         image: z.string(),
@@ -31,7 +31,7 @@ export const updateProductoInput = z.object(
         code: z.number({
 
             invalid_type_error: 'El Codigo debe ser un numero',
-        }).lte(5), 
+        }), 
         name: z.string({
             invalid_type_error: 'El nombre del producto debe ser texto'
         }),
@@ -41,7 +41,7 @@ export const updateProductoInput = z.object(
         categoriasId: z.string(),
         stock: z.number({
             invalid_type_error: 'El Codigo debe ser un numero',
-        }).lte(4),
+        }),
         description: z.string(),
         thumbnail: z.string(),
         image: z.string(),

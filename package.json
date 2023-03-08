@@ -17,6 +17,8 @@
     "@fontsource/playfair-display": "^4.5.13",
     "@fontsource/raleway": "^4.5.12",
     "@fontsource/source-sans-pro": "^4.5.11",
+    "@iconscout/react-unicons": "^2.0.0",
+    "@iconscout/unicons": "^4.0.6",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@prisma/client": "^4.9.0",
     "@tanstack/react-query": "^4.20.2",

@@ -9,7 +9,7 @@ export const PanelSelector: React.FC<PanelSelectorProps> = ({panelSet}) => {
 
     return (
         <> 
-                <Box bg={'gray.600'} w={'full'} h={'full'} p={3}>
+                <Box w={'full'} h={'full'} p={3}>
                     <HStack spacing={'10'} pt={'8vh'}>
                         <Button 
                             w={'48%'} 

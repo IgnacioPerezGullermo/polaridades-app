@@ -14,7 +14,7 @@ export const CrearProducto: React.FC = () => {
         name: '',
         price: 0,
         categoriasId: '',
-        stock: 0,
+        stock : 0,
         description: '',
         thumbnail: '',
         image: '',
@@ -22,6 +22,7 @@ export const CrearProducto: React.FC = () => {
 
     const trpc = api.useContext()
     
+    const {data:Categorias} = api.categorias.all.useQuery()
     const {mutate} = api.productos.create.useMutation({
         onSettled: async () =>{
             await trpc.productos.all.invalidate()
@@ -30,7 +31,7 @@ export const CrearProducto: React.FC = () => {
 
     return (
         <>
-            <Box>
+            <Box bg={'gray.800'} h={'full'} px={6} py={2} rounded={'base'}>
                         <form
                             onSubmit={(e)=>{
                                 e.preventDefault()
@@ -65,7 +66,7 @@ export const CrearProducto: React.FC = () => {
                                     focusBorderColor={'red.600'}
                                     type='text'
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     mb={'2'}
                                     name='name'
                                     onChange={(e)=>{
@@ -76,12 +77,9 @@ export const CrearProducto: React.FC = () => {
                                 <Input 
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
-                                    type='number' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     mb={'4'}
-                                    max='8' 
-                                    min='0'
                                     name='description'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: e.target.value})
@@ -97,12 +95,10 @@ export const CrearProducto: React.FC = () => {
                                     focusBorderColor={'red.600'}
                                     type='number' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
                                     mt={'4'}
-                                    max='8'
-                                    min='0'
                                     name='code'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: Number(e.target.value)})
@@ -114,11 +110,9 @@ export const CrearProducto: React.FC = () => {
                                     focusBorderColor={'red.600'}
                                     type='number' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
-                                    max='8'
-                                    min='0'
                                     name='price'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: Number(e.target.value)})
@@ -134,28 +128,32 @@ export const CrearProducto: React.FC = () => {
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
                                     mt={'4'}
-                                    name='categoria'
+                                    name='categoriasId'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: e.target.value})
                                     }}
                                     >
-                                        <option>Selection una opcion</option>
+                                        <option className='text-black'>Selection una opcion</option>
+                                        {Categorias?.map((cat)=>{
+                                            return (
+                                                <option className='text-black' key={cat.id} value={cat.id}>{cat.name}</option>
+                                            )
+                                        })
+                                        }
                                     </Select>
 
                                 <Input 
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
-                                    type='number' 
+                                    type='text' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
-                                    max='8'
-                                    min='0'
                                     name='image'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: e.target.value})
@@ -170,14 +168,11 @@ export const CrearProducto: React.FC = () => {
                                 <Input 
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
-                                    type='number' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
                                     mt={'4'}
-                                    max='8'
-                                    min='0'
                                     name='thumbnail'
                                     onChange={(e)=>{
                                         setProductoNuevo({...productoNuevo, [e.target.name]: e.target.value})
@@ -189,10 +184,9 @@ export const CrearProducto: React.FC = () => {
                                     focusBorderColor={'red.600'}
                                     type='number' 
                                     color={'white'}
-                                    size={'lg'}
+                                    size={'md'}
                                     w={'49%'}
                                     mb={'4'}
-                                    max='8'
                                     min='0'
                                     name='stock'
                                     onChange={(e)=>{
@@ -200,11 +194,9 @@ export const CrearProducto: React.FC = () => {
                                     }}
                                     />                                
                             </HStack>
-                        <Center w={'full'} mb={'2'} mt={'2'}>
-                            <Button colorScheme={'red'} w={'full'} size={'lg'} type='submit'>
-                                Crear nueva mesa
+                            <Button colorScheme={'red'} size={'lg'} w={'50%'} type='submit'>
+                                Crear nuevo producto
                             </Button>
-                        </Center>
                     </form>
 
             </Box>

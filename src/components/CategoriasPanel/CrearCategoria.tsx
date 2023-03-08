@@ -25,7 +25,7 @@ export const CrearCategoria: React.FC = () => {
 
     return (
         <>
-            <Box>
+            <Box bg={'gray.800'} p={6} rounded={'base'}>
                         <form
                             onSubmit={(e)=>{
                                 e.preventDefault()
@@ -52,6 +52,12 @@ export const CrearCategoria: React.FC = () => {
                                     status: 'success',
                                     duration: 4000,
                                 })
+                                setCategoriaNueva({
+                                    name: '',
+                                    description: '',
+                                    thumbnail: '',
+                                })
+                                
 
                         }}>
                             <FormLabel color={'white'} fontSize={'lg'} mt={'4'}>Nombre</FormLabel>
@@ -59,6 +65,7 @@ export const CrearCategoria: React.FC = () => {
                                     variant={'outline'}
                                     focusBorderColor={'red.600'}
                                     type='text'
+                                    value={CategoriaNueva.name}
                                     color={'white'}
                                     size={'lg'}
                                     mb={'2'}
@@ -71,6 +78,8 @@ export const CrearCategoria: React.FC = () => {
                                 <Input 
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
+                                    type={'text'}
+                                    value={CategoriaNueva.description}
                                     color={'white'}
                                     size={'lg'}
                                     mb={'4'}
@@ -83,6 +92,8 @@ export const CrearCategoria: React.FC = () => {
                                 <Input 
                                     variant={'outline'} 
                                     focusBorderColor={'red.600'}
+                                    type={'text'}
+                                    value={CategoriaNueva.thumbnail}
                                     color={'white'}
                                     size={'lg'}
                                     mb={'4'}
@@ -94,7 +105,7 @@ export const CrearCategoria: React.FC = () => {
                                     />
                         <Center w={'full'} mb={'2'} mt={'2'}>
                             <Button colorScheme={'red'} w={'full'} size={'lg'} type='submit'>
-                                Crear nueva mesa
+                                Crear nueva categoria
                             </Button>
                         </Center>
                     </form>
